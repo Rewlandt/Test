@@ -1,8 +1,6 @@
 <?
 IncludeModuleLangFile(__FILE__);
-AddEventHandler("main", "OnBeforeEventAdd", array("task2", "task2func"));
-class task2
-{
+AddEventHandler("main", "OnBeforeEventAdd", "task2func");
     function task2func(&$event, &$lid, &$arFields)
     {
         if ($event == "FEEDBACK_FORM") {
@@ -36,4 +34,3 @@ class task2
             );
         }
     }
-}
