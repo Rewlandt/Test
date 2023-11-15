@@ -38,11 +38,9 @@ if ($this->startResultCache()) {
 	$obNews = CIBlockElement::GetList(
 		array(),
 		array(
-			"IBLOCK_ID" => $arParams["PRODUCTS_IBLOCK_ID"],
-			["ACTIVE"] => "Y"
+			"IBLOCK_ID" => $arParams["NEWS_IBLOCK_ID"],
+			"ACTIVE" => "Y"
 		),
-		// arGroupBy:false,
-		// arNewStartParams:false,
 		array(
 			"NAME",
 			"ACTIVE_FROM",
@@ -67,14 +65,12 @@ if ($this->startResultCache()) {
 			"ACTIVE",
 			$arParams["PRODUCTS_IBLOCK_ID_PROPERTY"] => $arNewsID
 		),
-		// bincCnt:false,
 		array(
 			"NAME",
 			"IBLOCK_ID",
 			"ID",
 			$arParams["PRODUCTS_IBLOCK_ID_PROPERTY"]
 		)
-		// arNavStartParams:false
 	);
 
 	while ($arSectionCatalog = $obSection->Fetch()) {
@@ -91,8 +87,6 @@ if ($this->startResultCache()) {
 			"ACTIVE" => "Y",
 			"SECTION_ID" => $arSectionsID
 		),
-		// arGroupBy:false,
-		// arNewStartParams:false,
 		array(
 			"NAME",
 			"IBLOCK_SECTION_ID",
@@ -119,7 +113,7 @@ if ($this->startResultCache()) {
 	
 	foreach ($arSections as $arSection) {
 
-		foreach ($arSection[$arParams["PRODUCTS_IBLOCK_ID_PROPERTY"] as $newId) {
+		foreach ($arSection[$arParams["PRODUCTS_IBLOCK_ID_PROPERTY"]] as $newId) {
 			$arResult["NEWS"][$newId]['SECTIONS'] = $arSection["NAME"];
 		}
 	}
