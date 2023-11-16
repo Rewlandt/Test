@@ -19,8 +19,6 @@ if(!Loader::includeModule( moduleName: "iblock"))
 	return;
 }
 
-// echo '<pre>'; print_r($arParams); echo '</pre>';
-
 if(!isset($arParams["CACHE_TIME"]))
 	$arParams["CACHE_TIME"] = 36000000;
 
