@@ -41,6 +41,8 @@ if ($this->startResultCache()) {
 			"IBLOCK_ID" => $arParams["NEWS_IBLOCK_ID"],
 			"ACTIVE" => "Y"
 		),
+		false,
+		false,
 		array(
 			"NAME",
 			"ACTIVE_FROM",
@@ -65,12 +67,15 @@ if ($this->startResultCache()) {
 			"ACTIVE",
 			$arParams["PRODUCTS_IBLOCK_ID_PROPERTY"] => $arNewsID
 		),
+		false,
+		false,
 		array(
 			"NAME",
 			"IBLOCK_ID",
 			"ID",
 			$arParams["PRODUCTS_IBLOCK_ID_PROPERTY"]
-		)
+		),
+		false
 	);
 
 	while ($arSectionCatalog = $obSection->Fetch()) {
@@ -87,6 +92,8 @@ if ($this->startResultCache()) {
 			"ACTIVE" => "Y",
 			"SECTION_ID" => $arSectionsID
 		),
+		false,
+		false,
 		array(
 			"NAME",
 			"IBLOCK_SECTION_ID",
