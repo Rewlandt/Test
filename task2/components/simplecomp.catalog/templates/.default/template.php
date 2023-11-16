@@ -2,27 +2,30 @@
 ---
 </br>
 <p><b><?=GetMessage("SIMPLECOMP_TASK2_CAT_TITLE")?></b></p>
-<?php if (is_countable($arResult["CLASSIF"]) && count($arResult["CLASSIF"]) > 0) { ?>
+<?php if (is_countable($arResult["NEWS"]) && count($arResult["NEWS"]) > 0) { ?>
     <ul>
-        <?php foreach ($arResult["CLASSIF"] as $arClassificator) { ?>
+        <?php foreach ($arResult["NEWS"] as $arNews) { ?>
             <li>
                 <b>
-                    <?=$arClassificator["NAME"];?>
+                    <?=$arNews["NAME"];?>
                 </b>
-                <?php if (count($arClassificator["ELEMENTS"]) > 0) { ?>
-                    <ul>
-                        <?php foreach ($arClassificator["ELEMENTS"] as $arItems) { ?>
-                            <li>
-                                <?=$arItems["NAME"];?> -
-                                <?=$arItems["PROPERTY"]["PRICE"]["VALUE"];?> -
-                                <?=$arItems["PROPERTY"]["MATERIAL"]["VALUE"];?> -
-                                <?=$arItems["PROPERTY"]["ARTNUMBER"]["VALUE"];?> -
-                                <a href="<?=$arItems["DETAIL_PAGE_URL"];?>">ссылка на детальный просмотр</a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                <?php } ?>
+                - <?=$arNews["ACTIVE_FORM"];?>
+                (<?=implode(",", $arNews ?? ["SECTIONS"]);?>)
             </li>
+    
+            <?php if (is_countable($arNews["PRODUCTS"]) && count($arNews["PRODUCTS"]) > 0) { ?>
+                <ul>
+                    <?php foreach ($arNews["PRODUCTS"] as $arProduct) { ?>
+                        <li>
+                            <?=$arProduct["NAME"];?> -
+                            <?=$arProduct["PROPERTY_PRICE_VALUE"];?> -
+                            <?=$arProduct["PROPERTY_MATERIAL_VALUE"];?> -
+                            <?=$arProduct["PROPERTY_ARTNUMBER_VALUE"];?> -
+                            <!-- <a href="<?=$arItems["DETAIL_PAGE_URL"];?>">ссылка на детальный просмотр</a> -->
+                        </li>
+                    <?php } ?>
+                </ul>
+            <?php } ?>
         <?php } ?>
     </ul>
 <?php } ?>
