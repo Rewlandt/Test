@@ -108,18 +108,16 @@ if ($this->startResultCache()) {
 	while ($arProduct = $obProduct->Fetch()) {
 		$arResult["PRODUCT_CNT"] ++;
 		foreach ($arSections[$arProduct["IBLOCK_SECTION_ID"]][$arParams["PRODUCTS_IBLOCK_ID_PROPERTY"]] as $newsId) {
-			$arNewsList[$newsId]["PRODUCTS"][] = $arProduct;
+			$arNews[$newsId]["PRODUCTS"][] = $arProduct;
 		}
 	}
 	
 
 	//Распределяем разделы по новостям
-	$arResult["PRODUCT_CNT"] = 0;
-	
 	foreach ($arSections as $arSection) {
 
 		foreach ($arSection[$arParams["PRODUCTS_IBLOCK_ID_PROPERTY"]] as $newId) {
-			$arResult["NEWS"][$newId]['SECTIONS'] = $arSection["NAME"];
+			$arNews[$newId]['SECTIONS'] = $arSection["NAME"];
 		}
 	}
 
@@ -129,6 +127,5 @@ if ($this->startResultCache()) {
 } else {
 	$this->abortResultCache();
 }
-
 $APPLICATION->SetTitle( title: GetMessage("COUNT").$arResult["PRODUCT_CNT"]);
 ?>
