@@ -5,4 +5,4 @@ $APPLICATION->SetTitle("Задание2");
 	"simplecomp.catalog",
 	"",
 Array()
-);?>Text here....<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
