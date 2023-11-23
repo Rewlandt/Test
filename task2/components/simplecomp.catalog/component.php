@@ -57,12 +57,13 @@ if ($this->startResultCache()) {
 
 	$arSections = array();
 	$arSectionsID = array();
+	
 	// Получаем список активных разделов с привязкой к активным новостям
-	$obSection = CIBlockSection::GetList(
+	$obSection = CIBlockElement::GetList(
 		array(),
 		array(
 			"IBLOCK_ID" => $arParams["PRODUCTS_IBLOCK_ID"],
-			"ACTIVE",
+			"ACTIVE" => "Y",
 			$arParams["PRODUCTS_IBLOCK_ID_PROPERTY"] => $arNewsID
 		),
 		false,
@@ -75,10 +76,10 @@ if ($this->startResultCache()) {
 		),
 		false
 	);
-
+	
 	while ($arSectionCatalog = $obSection->Fetch()) {
-		$arSectionsID = $arSectionCatalog["ID"];
-		$arSections[$arSectionCatalog["ID"]] = $arSectionCatalog;
+		$arNewsID[] = $arSectionCatalog["ID"];
+		$arNews[$arSectionCatalog["ID"]] = $arSectionCatalog;
 	}
 	
 
