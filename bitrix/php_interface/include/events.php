@@ -19,7 +19,7 @@ AddEventHandler("main", "OnBeforeEventAdd", "FeedbackHandlerEvent");
                 $arFields["AUTHOR"] = GetMessage(
                     "TASK2_NO_AUTH_USER",
                     array(
-                        "#NAME_FORM#" => $arFields["AUTHOR"]
+                        "NAME_FORM" => $arFields["AUTHOR"]
                     )
                 );
             }
